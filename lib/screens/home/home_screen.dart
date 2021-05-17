@@ -14,12 +14,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final List<NoteModel> notes = [
-    NoteModel(id: 1,color: "#3369ff",content: "Esta es una nota",image: ["image1","image2"],tasks: ["run","ran","ren"],title: "Primer Nota"),
-    NoteModel(id: 2,color: "#b30075",content: "Esta es una nota",image: ["image1","image2"],tasks: ["run","ran","ren"],title: "Segunda Nota"),
-    NoteModel(id: 3,color: "#ff7000",content: "Esta es una nota",image: ["image1","image2"],tasks: ["run","ran","ren"],title: "Tercer Nota"),
-    NoteModel(id: 4,color: "#00c788",content: "Esta es una nota",image: ["image1","image2"],tasks: ["run","ran","ren"],title: "Cuarta Nota"),
-    NoteModel(id: 3,color: "#ffda47",content: "Esta es una nota",image: ["image1","image2"],tasks: ["run","ran","ren"],title: "Quinta Nota"),
-    NoteModel(id: 3,color: "#191927",content: "Esta es una nota",image: ["image1","image2"],tasks: ["run","ran","ren"],title: "Sexta Nota"),
+    NoteModel(id: 1,color: "#3369ff",content: "Esta es una nota",title: "Primer Nota"),
+    NoteModel(id: 2,color: "#b30075",content: "Esta es una nota",title: "Segunda Nota"),
+    NoteModel(id: 3,color: "#ff7000",content: "Esta es una nota",title: "Tercer Nota"),
+    NoteModel(id: 4,color: "#00c788",content: "Esta es una nota",title: "Cuarta Nota"),
+    NoteModel(id: 3,color: "#ffda47",content: "Esta es una nota",title: "Quinta Nota"),
+    NoteModel(id: 3,color: "#191927",content: "Esta es una nota",title: "Sexta Nota"),
   ];
   
   @override
