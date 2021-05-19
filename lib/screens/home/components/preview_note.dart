@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app_me/models/note_model.dart';
+import 'package:notes_app_me/provider/notes_provider.dart';
 import 'package:notes_app_me/utils/color_convert.dart';
 import 'package:notes_app_me/utils/consts.dart';
+import 'package:provider/provider.dart';
 class PreviewNote extends StatelessWidget {
 
   final NoteModel prevNote;
@@ -22,7 +24,25 @@ class PreviewNote extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(this.prevNote.title, style: TextStyle(color: colorConvert(this.prevNote.color),fontSize: 20.0,fontWeight: FontWeight.bold)),
+            Stack(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(right: 5.0),
+                  child: Text(this.prevNote.title, style: TextStyle(color: colorConvert(this.prevNote.color),fontSize: 20.0,fontWeight: FontWeight.bold)),
+                ),
+                Positioned(
+                  right: 0,
+                  child: InkWell(
+                    onTap: (){
+                      final notelist = Provider.of<NotesListProvider>(context,listen: false);
+                      print(this.prevNote.id);
+                      notelist.deleteNote(this.prevNote.id);
+                    },
+                    child: Icon(Icons.delete_outline_outlined,color: Colors.white)
+                  )
+                ),
+                ]
+            ),
             SizedBox(height: 5.0,),
             Row(
               children: [

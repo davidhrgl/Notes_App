@@ -19,7 +19,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final notesList = Provider.of<NotesListProvider>(context);
     final notes = notesList.notes;
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Notes',style: TextStyle(color: Colors.white,fontSize: 30,fontWeight: FontWeight.bold,),),
@@ -57,8 +56,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
           final note = new NoteModel(
             title: 'Primera Nota desde BD',
-            color: '#3369ff',
-            content: 'Esta es una nota'
+            color: '#b30075',
+            content: 'Esta es una nota 1'
           );
           Provider.of<NotesListProvider>(context,listen: false).newNote(note);
          },

@@ -13,7 +13,6 @@ class DBProvider{
 
   Future<Database> get database async{
     if(_database != null) return _database;
-
     _database = await initDB();
 
     return _database;
@@ -25,7 +24,6 @@ class DBProvider{
     Directory documentsDirectory =  await getApplicationDocumentsDirectory();
     final path = join(documentsDirectory.path,'NotesApp.db');
     print(path);
-
     //Create DB
     return await openDatabase(
      path,
@@ -96,11 +94,11 @@ class DBProvider{
     return res;
   }
 
-  Future<int> deleteNote(NoteModel note)async{
+  Future<int> deleteNote(int idNote)async{
     final db = await database;
-    this.deleteMediaByIdNote(note.id);
-    this.deleteTaskByIdNote(note.id);
-    final res = await db.delete('note',where: "id = ? ",whereArgs: [note.id]);
+    // this.deleteMediaByIdNote(note.id);
+    // this.deleteTaskByIdNote(note.id);
+    final res = await db.delete('note',where: "id = ? ",whereArgs: [idNote]);
     return res;
   }
   //===============> Functions to Media-TABLE <==================
