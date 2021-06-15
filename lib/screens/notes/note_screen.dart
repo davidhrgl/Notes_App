@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app_me/screens/notes/components/menu_bottom_sheet.dart';
 import 'package:notes_app_me/utils/consts.dart';
 import 'package:notes_app_me/widgets/edit_bar.dart';
 
@@ -90,55 +91,7 @@ class _NoteScreenState extends State<NoteScreen> {
               child: EditBarCustom(),
             )
           ),
-          Positioned(
-            height: 300,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: GestureDetector(
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 32),
-                decoration: const BoxDecoration(
-                  color: navyColor,
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
-                ),
-                child: Stack(
-                  children: <Widget>[
-                    Positioned(
-                      right: 0,
-                      bottom: 15,
-                      child: Icon(
-                        Icons.more_horiz_outlined,
-                        color: secondColor,
-                        size: 40,
-                      ),
-                    ),
-                    Positioned(
-                      top: 10,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          circleColor(purpleColor),
-                          circleColor(yellowLightColor),
-                          circleColor(Colors.white),
-                          circleColor(pinkRedColor),
-                          circleColor(greenColor),
-                          circleColor(orangeStrongColor),
-                          circleColor(blackColor),
-                        ],
-                      )
-                    ),
-                    getItemMenu(Icons.delete_forever_outlined,'Delete note',60),
-                    getItemMenu(Icons.copy_outlined,'Make a copy',110),
-                    getItemMenu(Icons.share_outlined,'Share',160),
-                    getItemMenu(Icons.label_important_outline,'Labels',210),
-                     
-                  ],
-                ),
-              ),
-            ),
-          ),
+          MenuBottomSheet(),
         ] 
         )
       ),
@@ -174,37 +127,8 @@ class _NoteScreenState extends State<NoteScreen> {
       ],
     );
   }
-
-  Widget circleColor(Color color){
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 3.5),
-      height: 35.0,
-      width: 35.0,
-      decoration: BoxDecoration(
-        color: color,
-        shape: BoxShape.circle,
-        border: Border.all(color: greyLightColor,width: 3.0),
-      ),
-    );
-  }
-
-  Widget getItemMenu(IconData icon,String text,double offset){
-    return Positioned(
-      top: offset,
-      child: InkWell(
-        child: Container(
-          child: Row(
-            children: [
-              Icon(icon,color:Colors.white,size: 30.0,),
-              SizedBox(width: 20.0,),
-              Text(text,style: TextStyle(color: Colors.white,fontSize: 20.0),)
-            ],
-          ),
-        ),
-        onTap: (){},
-      ),
-    );
-  }
 }
+
+
 
 

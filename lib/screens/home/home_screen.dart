@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app_me/models/note_model.dart';
+// import 'package:notes_app_me/models/note_model.dart';
 import 'package:notes_app_me/provider/notes_provider.dart';
 import 'package:notes_app_me/screens/home/components/custom_nav_bar.dart';
 import 'package:notes_app_me/utils/consts.dart';
@@ -52,14 +52,14 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 10,
         child: Icon(Icons.add,color: Colors.white,),
         onPressed: () { 
-          // Navigator.pushNamed(context, 'note');
+          Navigator.pushNamed(context, 'note');
 
-          final note = new NoteModel(
-            title: 'Primera Nota desde BD',
-            color: '#b30075',
-            content: 'Esta es una nota 1'
-          );
-          Provider.of<NotesListProvider>(context,listen: false).newNote(note);
+          // final note = new NoteModel(
+          //   title: 'Primera Nota desde BD',
+          //   color: '#b30075',
+          //   content: 'Esta es una nota 1'
+          // );
+          // Provider.of<NotesListProvider>(context,listen: false).newNote(note);
          },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
