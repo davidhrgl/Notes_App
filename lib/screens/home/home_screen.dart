@@ -54,12 +54,12 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: () { 
           Navigator.pushNamed(context, 'note');
 
-          // final note = new NoteModel(
-          //   title: 'Primera Nota desde BD',
-          //   color: '#b30075',
-          //   content: 'Esta es una nota 1'
-          // );
-          // Provider.of<NotesListProvider>(context,listen: false).newNote(note);
+        //   final note = new NoteModel(
+        //     title: 'Primera Nota desde BD',
+        //     color: '#b30075',
+        //     content: 'Esta es una nota 1'
+        //   );
+        //   Provider.of<NotesListProvider>(context,listen: false).newNote(note);
          },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,

@@ -40,7 +40,7 @@ class _CustomNavBarState extends State<CustomNavBar> {
         splashSpeedInMilliseconds: 300,
         notchSmoothness: NotchSmoothness.defaultEdge,
         gapLocation: GapLocation.end,
-        leftCornerRadius: 30,
+        leftCornerRadius: 0,
         rightCornerRadius: 0,
         onTap: (index) => setState(()=> _bottomNavIndex = index),
       );

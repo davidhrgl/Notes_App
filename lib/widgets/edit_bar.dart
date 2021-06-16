@@ -35,21 +35,29 @@ class EditBarCustom extends StatelessWidget {
               onTap: () {
                 Navigator.pop(context);
               },),
-            SizedBox(width: 10.0,),
             Expanded(
               child: Container(
                 width: double.infinity,
               ),
             ),
-            SizedBox(width: 10.0,),
+            Icon(Icons.delete,color: redColor),
+            SizedBox(width: 20.0,),
             Icon(Icons.flip_rounded,color: purpleColor,),
             SizedBox(width: 20.0,),
             Icon(Icons.undo_outlined,color: purpleColor),
             SizedBox(width: 20.0,),
             Icon(Icons.redo_outlined,color: purpleColor),
-            SizedBox(width: 40.0,),
-            Icon(Icons.check_circle_outline_outlined,color: purpleColor),
-            SizedBox(width: 10.0,),
+            SizedBox(width: 20.0,),
+            Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.0),
+                color: greenAcentColor,
+                ),
+                child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text('Guardar',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
+              ),
+            ),
           ],
         ),
       ),

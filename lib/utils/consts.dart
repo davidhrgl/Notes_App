@@ -14,5 +14,6 @@ const Color navyColor = Color(0xFF162A49);
 const Color blackColor = Color(0xFF1f2633);
 const Color greyColor = Color(0xFF9f9fb2);
 const Color pinkRedColor = Color(0xFFb30075);
+const Color redColor = Color(0xFFee0045);
 const Color greenColor = Color(0xFF00fdad);
 const Color greenAcentColor = Color(0xFF00C9AB);
