@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app_me/provider/notes_provider.dart';
-import 'package:notes_app_me/screens/home/home_screen.dart';
-import 'package:notes_app_me/screens/notes/note_screen.dart';
+import 'package:notes_app_me/src/services/notes_service_provider.dart';
+import 'package:notes_app_me/app/view/home/home_view.dart';
+import 'package:notes_app_me/app/view/notes/note_view.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app_me/utils/consts.dart';
+import 'package:notes_app_me/src/utils/consts.dart';
 
 class EditBarCustom extends StatelessWidget {
   const EditBarCustom({

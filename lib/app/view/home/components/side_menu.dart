@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app_me/utils/consts.dart';
+import 'package:notes_app_me/src/utils/consts.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({Key key}) : super(key: key);

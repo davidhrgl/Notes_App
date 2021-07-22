@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:notes_app_me/models/note_model.dart';
-export 'package:notes_app_me/models/note_model.dart';
+import 'package:notes_app_me/app/model/note_model.dart';
+export 'package:notes_app_me/app/model/note_model.dart';
 
 class DBProvider{
   static Database _database;

@@ -1,6 +1,6 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:notes_app_me/utils/consts.dart';
+import 'package:notes_app_me/src/utils/consts.dart';
 
 class CustomNavBar extends StatefulWidget {
   final List<IconData> icons;

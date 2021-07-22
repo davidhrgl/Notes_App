@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app_me/utils/consts.dart';
+import 'package:notes_app_me/src/utils/consts.dart';
 class SearchBarCustom extends StatelessWidget {
   const SearchBarCustom({
     Key key,
