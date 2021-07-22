@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app_me/app/model/note_model.dart';
-import 'package:notes_app_me/src/services/notes_service_provider.dart';
+import 'package:notes_app_me/app/viewmodel/home_viewmodel.dart';
 import 'package:notes_app_me/src/utils/color_convert.dart';
 import 'package:notes_app_me/src/utils/consts.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +14,7 @@ class PreviewNote extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final homeVM = Provider.of<HomeViewModel>(context);
     return Stack(
           children: [
             Container(
@@ -92,11 +93,7 @@ class PreviewNote extends StatelessWidget {
             Positioned(
             right: 0.0,
             child: InkWell(
-              onTap: (){
-                final notelist = Provider.of<NotesListProvider>(context,listen: false);
-                print(this.prevNote.id);
-                notelist.deleteNote(this.prevNote.id);
-              },
+              onTap: () => homeVM.deleteNoteById(this.prevNote.id),
               child: Icon(Icons.cancel_outlined,color: secondColor,size: 30.0,)
             )
           ),

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app_me/src/services/notes_service_provider.dart';
-import 'package:notes_app_me/app/view/home/components/custom_nav_bar.dart';
+import 'package:notes_app_me/app/viewmodel/home_viewmodel.dart';
 import 'package:notes_app_me/src/utils/consts.dart';
-import 'package:notes_app_me/app/view/home/components/search_bar.dart';
 import 'package:provider/provider.dart';
-
+import 'components/search_bar.dart';
+import 'components/custom_nav_bar.dart';
 import 'components/grid_notes.dart';
 import 'components/side_menu.dart';
 class HomeScreen extends StatefulWidget {
@@ -16,8 +15,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final notesList = Provider.of<NotesListProvider>(context);
-    final notes = notesList.notes;
+    final homeVM = Provider.of<HomeViewModel>(context);   
     return Scaffold(
       appBar: AppBar(
         title: Text('Notes',style: TextStyle(color: Colors.white,fontSize: 30,fontWeight: FontWeight.bold,),),
@@ -40,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 SearchBarCustom(),
                 SizedBox(height: 20.0,),
-                GridNotes(notes: notes),
+                GridNotes(notes: homeVM.notesGroup),
               ],
             ),
           ),

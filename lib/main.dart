@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app_me/src/services/notes_service_provider.dart';
+import 'package:notes_app_me/app/viewmodel/home_viewmodel.dart';
 import 'package:notes_app_me/app/view/home/home_view.dart';
-import 'package:notes_app_me/app/view/notes/note_view.dart';
+import 'package:notes_app_me/app/view/note/note_view.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_)=> new NotesListProvider()),
+        ChangeNotifierProvider(create: (_)=> new HomeViewModel(context)),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

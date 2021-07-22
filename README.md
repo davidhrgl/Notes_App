@@ -4,6 +4,9 @@ A Notes App made in Flutter!
 
 ## Getting Started
 
+:warning: ATTENTION: This repo is under construction, the features are not developed yet, only the UI is developed. :hammer: :wrench:
+
+
 This project is a notes app made in flutter using sql lite and some animations.
 
 <img src="https://github.com/davidhrgl/Notes_App/blob/master/screenshot/img1.png?raw=true" width="40%" height="40%">
