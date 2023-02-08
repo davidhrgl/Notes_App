@@ -14,10 +14,10 @@ class NoteModel {
         this.color,
     });
 
-    int id;
-    String title;
-    String content;
-    String color;
+    int? id;
+    String? title;
+    String? content;
+    String? color;
 
     factory NoteModel.fromJson(Map<String, dynamic> json) => NoteModel(
         id: json["id"],

@@ -1,18 +1,16 @@
-# Notes App
+# notes_app
 
-A Notes App made in Flutter!
+A new Flutter project.
 
 ## Getting Started
 
-:warning: ATTENTION: This repo is under construction, the features are not developed yet, only the UI is developed. :hammer: :wrench:
+This project is a starting point for a Flutter application.
 
+A few resources to get you started if this is your first Flutter project:
 
-This project is a notes app made in flutter using sql lite and some animations.
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-<img src="https://github.com/davidhrgl/Notes_App/blob/master/screenshot/img1.png?raw=true" width="40%" height="40%">
-
-<img src="https://github.com/davidhrgl/Notes_App/blob/master/screenshot/img2.png?raw=true" width="40%" height="40%">
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.

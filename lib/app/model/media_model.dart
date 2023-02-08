@@ -12,10 +12,10 @@ class MediaModel {
         this.type,
     });
 
-    int id;
-    int idNote;
-    String path;
-    String type;
+    int? id;
+    int? idNote;
+    String? path;
+    String? type;
 
     factory MediaModel.fromJson(Map<String, dynamic> json) => MediaModel(
         id: json["id"],

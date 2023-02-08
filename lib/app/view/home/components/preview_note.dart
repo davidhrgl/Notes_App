@@ -7,9 +7,9 @@ import 'package:provider/provider.dart';
 class PreviewNote extends StatelessWidget {
 
   final NoteModel prevNote;
-  PreviewNote({
-    Key key,
-    this.prevNote
+  const PreviewNote({
+    Key? key,
+    required this.prevNote
   }) : super(key: key);
 
   @override
@@ -19,7 +19,7 @@ class PreviewNote extends StatelessWidget {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: colorConvert(this.prevNote.color).withOpacity(0.4),
+                color: colorConvert(prevNote.color!)!.withOpacity(0.4),
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: Padding(
@@ -28,62 +28,62 @@ class PreviewNote extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(right: 5.0),
-                      child: Text(this.prevNote.title, style: TextStyle(color: colorConvert(this.prevNote.color),fontSize: 20.0,fontWeight: FontWeight.bold)),
+                      padding: const EdgeInsets.only(right: 5.0),
+                      child: Text(prevNote.title!, style: TextStyle(color: colorConvert(prevNote.color!),fontSize: 20.0,fontWeight: FontWeight.bold)),
                     ),
-                    SizedBox(height: 5.0,),
+                    const SizedBox(height: 5.0,),
                     Row(
                       children: [
                         Icon(Icons.check_circle,color: Colors.white.withOpacity(0.2),),
-                        SizedBox(width: 20.0,),
-                        Text('Tasks', style: TextStyle(color: Colors.white,fontSize: 15.0,decoration: TextDecoration.lineThrough)),
+                        const SizedBox(width: 20.0,),
+                        const Text('Tasks', style: TextStyle(color: Colors.white,fontSize: 15.0,decoration: TextDecoration.lineThrough)),
                       ],
                     ),
-                    SizedBox(height: 5.0,),
+                    const SizedBox(height: 5.0,),
                     Row(
-                      children: [
+                      children: const [
                         Icon(Icons.remove_circle_outline,color: Colors.white,),
                         SizedBox(width: 20.0,),
                         Text('Tasks', style: TextStyle(color: Colors.white,fontSize: 15.0,decoration: TextDecoration.lineThrough)),
                       ],
                     ),
-                    SizedBox(height: 5.0,),
+                    const SizedBox(height: 5.0,),
                     ElevatedButton(
-                      onPressed: (){}, 
+                      onPressed: (){},
+                      style: ElevatedButton.styleFrom(
+                        primary: colorConvert(prevNote.color!)!.withOpacity(0.3),
+                        elevation: 0.0,
+                        side: BorderSide(
+                          width: 0.5,
+                          color: colorConvert(prevNote.color!)!,
+                        ),
+                        textStyle: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold)
+                      ), 
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.alarm_on_sharp,color: secondColor,),
                           SizedBox(width: 8.0,),
                           Text('Sund, 8:00', style: TextStyle(color: secondColor,fontSize: 10.0)),
                         ],
                       ),
+                    ),
+                    ElevatedButton(
+                      onPressed: (){},
                       style: ElevatedButton.styleFrom(
-                        primary: colorConvert(this.prevNote.color).withOpacity(0.3),
+                        primary: colorConvert(prevNote.color!)!.withOpacity(0.3),
                         elevation: 0.0,
                         side: BorderSide(
                           width: 0.5,
-                          color: colorConvert(this.prevNote.color),
+                          color: colorConvert(prevNote.color!)!,
                         ),
-                        textStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: (){}, 
+                        textStyle: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold)
+                      ), 
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.multitrack_audio_sharp,color: secondColor,),
                           SizedBox(width: 8.0,),
                           Text('Audio', style: TextStyle(color: secondColor,fontSize: 10.0)),
                         ],
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        primary: colorConvert(this.prevNote.color).withOpacity(0.3),
-                        elevation: 0.0,
-                        side: BorderSide(
-                          width: 0.5,
-                          color: colorConvert(this.prevNote.color),
-                        ),
-                        textStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)
                       ),
                     ),
                   ],
@@ -93,8 +93,8 @@ class PreviewNote extends StatelessWidget {
             Positioned(
             right: 0.0,
             child: InkWell(
-              onTap: () => homeVM.deleteNoteById(this.prevNote.id),
-              child: Icon(Icons.cancel_outlined,color: secondColor,size: 30.0,)
+              onTap: () => homeVM.deleteNoteById(prevNote.id!),
+              child: const Icon(Icons.cancel_outlined,color: secondColor,size: 30.0,)
             )
           ),
       ],

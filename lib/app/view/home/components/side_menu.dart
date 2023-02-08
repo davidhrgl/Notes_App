@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:notes_app_me/src/utils/consts.dart';
 
 class SideMenu extends StatelessWidget {
-  const SideMenu({Key key}) : super(key: key);
+  const SideMenu({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +18,14 @@ class SideMenu extends StatelessWidget {
               children: [
                 Container(
                   width: double.infinity,
-                  padding: EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(20.0),
                   decoration: BoxDecoration(
                     color: greenAcentColor.withOpacity(0.2),
                     borderRadius: BorderRadius.circular(10.0)
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children:[ Text(
+                    children:const [ Text(
                       'Hola \nDavid Hernandez',
                       style: TextStyle(
                         color:greenAcentColor,
@@ -39,24 +39,21 @@ class SideMenu extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: Container(
-                    // height: 100.0,//size.height * 0.4,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        ItemMenu(color: greenAcentColor,textColor: secondColor,text: "Home",icon: Icons.home_rounded,),
-                        ItemMenu(color: greenAcentColor,textColor: secondColor,text: "Profile",icon: Icons.person_rounded,),
-                        ItemMenu(color: greenAcentColor,textColor: secondColor,text: "Favorites",icon: Icons.favorite_rounded,),
-                        ItemMenu(color: greenAcentColor,textColor: secondColor,text: "Help",icon: Icons.help,),
-                        ItemMenu(color: greenAcentColor,textColor: secondColor,text: "Settings",icon: Icons.settings,),
-                      ],
-                    ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: const [
+                      ItemMenu(color: greenAcentColor,textColor: secondColor,text: "Home",icon: Icons.home_rounded,),
+                      ItemMenu(color: greenAcentColor,textColor: secondColor,text: "Profile",icon: Icons.person_rounded,),
+                      ItemMenu(color: greenAcentColor,textColor: secondColor,text: "Favorites",icon: Icons.favorite_rounded,),
+                      ItemMenu(color: greenAcentColor,textColor: secondColor,text: "Help",icon: Icons.help,),
+                      ItemMenu(color: greenAcentColor,textColor: secondColor,text: "Settings",icon: Icons.settings,),
+                    ],
                   ),
                 ),
-                Divider(color: greenAcentColor,),
-                SizedBox(height: 20.0,),
-                ItemMenu(color: greenAcentColor,textColor: secondColor,text: "LogOut",icon: Icons.logout,),
-                Spacer(),
+                const Divider(color: greenAcentColor,),
+                const SizedBox(height: 20.0,),
+                const ItemMenu(color: greenAcentColor,textColor: secondColor,text: "LogOut",icon: Icons.logout,),
+                const Spacer(),
               ],
             ),
           ),
@@ -66,13 +63,13 @@ class SideMenu extends StatelessWidget {
 }
 
 class ItemMenu extends StatelessWidget {
-  final Color color;
-  final Color textColor;
-  final String text;
-  final IconData icon;
+  final Color? color;
+  final Color? textColor;
+  final String? text;
+  final IconData? icon;
 
-  ItemMenu({
-    Key key,
+  const ItemMenu({
+    Key? key,
     this.color,
     this.textColor,
     this.text,
@@ -84,8 +81,8 @@ class ItemMenu extends StatelessWidget {
     return Row(
       children: [
         Icon(icon,color: color,),
-        SizedBox(width: 10,),
-        Text(text,style: TextStyle(color:textColor,fontWeight: FontWeight.w500),),
+        const SizedBox(width: 10,),
+        Text(text!,style: TextStyle(color:textColor,fontWeight: FontWeight.w500),),
       ],
     );
   }

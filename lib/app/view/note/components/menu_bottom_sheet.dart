@@ -7,7 +7,7 @@ const double minHeight = 50;
 
 class MenuBottomSheet extends StatefulWidget {
   const MenuBottomSheet({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -16,36 +16,36 @@ class MenuBottomSheet extends StatefulWidget {
 
 class _MenuBottomSheetState extends State<MenuBottomSheet>  with SingleTickerProviderStateMixin{
 
-  AnimationController _controller;
+  AnimationController? _controller;
   double get maxHeight{
     final height = MediaQuery.of(context).size.height / 3;
     return height;
   }
-  double get headerTopMargin  => lerp(20,20 + MediaQuery.of(context).padding.top);
-  double get headerFontSize   => lerp(0,18);
-  double get colorPalletSize   => lerp(10,60);
-  double get padRight   => lerp(80,0);
+  double? get headerTopMargin  => lerp(20,20 + MediaQuery.of(context).padding.top);
+  double? get headerFontSize   => lerp(0,18);
+  double? get colorPalletSize   => lerp(10,60);
+  double? get padRight   => lerp(80,0);
 
   final List<Color> colorPallet = [purpleColor,yellowColor,Colors.white,pinkRedColor,greenAcentColor,orangeColor,blackColor,purpleColor,greyColor,yellowLightColor];
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this,duration: Duration(milliseconds: 500));
+    _controller = AnimationController(vsync: this,duration: const Duration(milliseconds: 500));
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _controller!.dispose();
     super.dispose();
   }
   //Custome Lerp
-  double lerp(double min, double max) => lerpDouble(min, max, _controller.value);
+  double? lerp(double min, double max) => lerpDouble(min, max, _controller!.value);
 
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: _controller,
+      animation: _controller!,
       builder: (context, snapshot) {
         return Positioned(
           height: lerp(minHeight,maxHeight),
@@ -65,15 +65,15 @@ class _MenuBottomSheetState extends State<MenuBottomSheet>  with SingleTickerPro
               child: Stack(
                 children: [
                   MenuButton(
-                    icon: _controller.status == AnimationStatus.completed ?  Icons.arrow_downward_outlined : Icons.arrow_upward_sharp,
+                    icon: _controller!.status == AnimationStatus.completed ?  Icons.arrow_downward_outlined : Icons.arrow_upward_sharp,
                   ),
-                  SheetHeader(fontSize: headerFontSize, topMargin: headerTopMargin),
+                  SheetHeader(fontSize: headerFontSize!, topMargin: headerTopMargin!),
                   Positioned(
                       top: colorPalletSize,
                       child: Container(
                         width: MediaQuery.of(context).size.width,
                         height: 30,
-                        padding: EdgeInsets.only(right: padRight),
+                        padding: EdgeInsets.only(right: padRight!),
                         child: ListView.builder(
                           itemCount: colorPallet.length,
                           scrollDirection: Axis.horizontal,
@@ -93,22 +93,20 @@ class _MenuBottomSheetState extends State<MenuBottomSheet>  with SingleTickerPro
   }
 
   void _toggle(){
-    final bool isOpen = _controller.status == AnimationStatus.completed;
-    _controller.fling(velocity: isOpen? -4 : 4);
+    final bool isOpen = _controller!.status == AnimationStatus.completed;
+    _controller!.fling(velocity: isOpen? -4 : 4);
   }
 
   Widget getItemMenu(IconData icon,String text,double offset){
     return Positioned(
       top: offset,
       child: InkWell(
-        child: Container(
-          child: Row(
-            children: [
-              Icon(icon,color:Colors.white,size: 30.0,),
-              SizedBox(width: 20.0,),
-              Text(text,style: TextStyle(color: Colors.white,fontSize: 20.0),)
-            ],
-          ),
+        child: Row(
+          children: [
+            Icon(icon,color:Colors.white,size: 30.0,),
+            const SizedBox(width: 20.0,),
+            Text(text,style: const TextStyle(color: Colors.white,fontSize: 20.0),)
+          ],
         ),
         onTap: (){},
       ),
@@ -116,19 +114,20 @@ class _MenuBottomSheetState extends State<MenuBottomSheet>  with SingleTickerPro
   }
 
   void _handleDragUpdate(DragUpdateDetails details) {
-    _controller.value -= details.primaryDelta / maxHeight;
+    _controller!.value -= (details.primaryDelta! / maxHeight);
   }
 
   void _handleDragEnd(DragEndDetails details) {
-    if(_controller.isAnimating || _controller.status == AnimationStatus.completed) return;
+    if(_controller!.isAnimating || _controller!.status == AnimationStatus.completed) return;
 
     final double flingVelocity = details.velocity.pixelsPerSecond.dy / maxHeight;
-    if(flingVelocity < 0.0)
-      _controller.fling(velocity: math.max(4.0, -flingVelocity));
-    else if(flingVelocity > 0.0)
-          _controller.fling(velocity: math.min(-4.0, -flingVelocity));
-        else
-          _controller.fling(velocity: _controller.value < 0.5 ? -4.0 :4.0);
+    if(flingVelocity < 0.0) {
+      _controller!.fling(velocity: math.max(4.0, -flingVelocity));
+    } else if(flingVelocity > 0.0) {
+      _controller!.fling(velocity: math.min(-4.0, -flingVelocity));
+    } else {
+      _controller!.fling(velocity: _controller!.value < 0.5 ? -4.0 :4.0);
+    }
   }
 }
 
@@ -136,15 +135,15 @@ class CircleColor extends StatelessWidget {
   final Color color;
   
   const CircleColor({
-    Key key,
-    @required this.color,
+    Key? key,
+    required this.color,
   }) : super(key: key);
 
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 3.5),
+      margin: const EdgeInsets.symmetric(horizontal: 3.5),
       height: 35.0,
       width: 35.0,
       decoration: BoxDecoration(
@@ -158,14 +157,14 @@ class CircleColor extends StatelessWidget {
 
 class MenuButton extends StatelessWidget {
   final IconData icon;
-  const MenuButton({Key key, @required this.icon}) : super(key: key);
+  const MenuButton({Key? key, required this.icon}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Positioned(
       right: 0,
       bottom: 10,
-      child: Icon(this.icon,color: secondColor,),
+      child: Icon(icon,color: secondColor,),
     );
   }
 }
@@ -174,7 +173,7 @@ class SheetHeader extends StatelessWidget {
   final double fontSize;
   final double topMargin;
 
-  const SheetHeader({Key key,@required this.fontSize,@required this.topMargin}) : super(key: key);
+  const SheetHeader({Key? key,required this.fontSize,required this.topMargin}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -183,7 +182,7 @@ class SheetHeader extends StatelessWidget {
       child: Text(
           "Agregar..",
           style: TextStyle(
-            fontSize: this.fontSize,
+            fontSize: fontSize,
             color: Colors.white,
             fontWeight: FontWeight.w500
           ),

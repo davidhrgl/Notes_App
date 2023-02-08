@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:notes_app_me/src/utils/consts.dart';
 class SearchBarCustom extends StatelessWidget {
   const SearchBarCustom({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -19,7 +19,7 @@ class SearchBarCustom extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
+          children:const [
             SizedBox(width: 10.0,),
             Icon(Icons.filter_list_outlined,color: Colors.white,),
             SizedBox(width: 20.0,),
@@ -27,7 +27,7 @@ class SearchBarCustom extends StatelessWidget {
               child: TextField(
                 style: TextStyle(color: Colors.white),
                 cursorColor: orangeColor,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   border: InputBorder.none,
                   focusedBorder: InputBorder.none,
                   enabledBorder: InputBorder.none,

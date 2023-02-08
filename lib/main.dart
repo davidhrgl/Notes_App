@@ -4,23 +4,25 @@ import 'package:notes_app_me/app/view/home/home_view.dart';
 import 'package:notes_app_me/app/view/note/note_view.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
- 
+void main() => runApp(const MyApp());
+
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_)=> new HomeViewModel(context)),
+        ChangeNotifierProvider(create: (_)=> HomeViewModel(context)),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Notes App',
         initialRoute: 'home',
         routes: {
-          'home'  : (BuildContext context) => HomeScreen(),
-          'note'  : (BuildContext context) => NoteScreen(),
+          'home'  : (BuildContext context) => const HomeScreen(),
+          'note'  : (BuildContext context) => const NoteScreen(),
         },
       ),
     );

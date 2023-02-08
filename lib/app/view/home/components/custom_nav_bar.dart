@@ -4,7 +4,7 @@ import 'package:notes_app_me/src/utils/consts.dart';
 
 class CustomNavBar extends StatefulWidget {
   final List<IconData> icons;
-  CustomNavBar({Key key,this.icons}) : super(key: key);
+  const CustomNavBar({Key? key,required this.icons}) : super(key: key);
 
   @override
   _CustomNavBarState createState() => _CustomNavBarState();
@@ -15,7 +15,7 @@ class _CustomNavBarState extends State<CustomNavBar> {
   @override
   Widget build(BuildContext context) {
 
-    var _bottomNavIndex = 0; 
+    var bottomNavIndex = 0; 
 
 
     return AnimatedBottomNavigationBar.builder(
@@ -30,19 +30,19 @@ class _CustomNavBarState extends State<CustomNavBar> {
                 size: 24,
                 color: Colors.white,
               ),
-              SizedBox(height: 4,),
+              const SizedBox(height: 4,),
             ],
           );
         }, 
         backgroundColor: bluedarkColor,
-        activeIndex: _bottomNavIndex,
+        activeIndex: bottomNavIndex,
         splashColor: primaryColor, 
         splashSpeedInMilliseconds: 300,
         notchSmoothness: NotchSmoothness.defaultEdge,
         gapLocation: GapLocation.end,
         leftCornerRadius: 0,
         rightCornerRadius: 0,
-        onTap: (index) => setState(()=> _bottomNavIndex = index),
+        onTap: (index) => setState(()=> bottomNavIndex = index),
       );
   }
 }

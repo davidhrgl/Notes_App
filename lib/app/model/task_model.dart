@@ -12,10 +12,10 @@ class TaskModel {
         this.state,
     });
 
-    int id;
-    int idNote;
-    String content;
-    int state;
+    int? id;
+    int? idNote;
+    String? content;
+    int? state;
 
     factory TaskModel.fromJson(Map<String, dynamic> json) => TaskModel(
         id: json["id"],

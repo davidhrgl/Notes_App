@@ -4,13 +4,15 @@ import 'package:notes_app_me/src/widgets/edit_bar.dart';
 import 'components/menu_bottom_sheet.dart';
 
 class NoteScreen extends StatefulWidget {
+  const NoteScreen({super.key});
+
 
   @override
   _NoteScreenState createState() => _NoteScreenState();
 }
 
 class _NoteScreenState extends State<NoteScreen> {
-  static List<String> friendsList = [null];
+  static List<String> friendsList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +50,8 @@ class _NoteScreenState extends State<NoteScreen> {
                                 ),
                                 style: const TextStyle(color: navyColor,fontSize: 35.0,fontWeight: FontWeight.bold)
                               ),
-                              SizedBox(height: 10.0,),
-                              Text('Domingo, 10:24 | 4096 caracteres | Ultimo cambio: Sabado, 11:22',style: TextStyle(color: greyColor,fontWeight: FontWeight.bold),),
+                              const SizedBox(height: 10.0,),
+                              const Text('Domingo, 10:24 | 4096 caracteres | Ultimo cambio: Sabado, 11:22',style: TextStyle(color: greyColor,fontWeight: FontWeight.bold),),
                               //Items
                               Column(
                                 children: _getItems(),
@@ -118,13 +120,13 @@ class _NoteScreenState extends State<NoteScreen> {
                     ],
                   ),
           ),
-          Positioned(
+          const Positioned(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: EditBarCustom(),
             )
           ),
-          MenuBottomSheet(),
+          const MenuBottomSheet(),
         ] 
         )
       ),
@@ -145,18 +147,18 @@ class _NoteScreenState extends State<NoteScreen> {
   Widget taskComplete(String text){
     return Row(
       children: [
-        Icon(Icons.check_box,color: pinkRedColor,),
-        SizedBox(width: 20.0,),
-        Text(text, style: TextStyle(color: blackLighColor,fontSize: 15.0,decoration: TextDecoration.lineThrough)),
+        const Icon(Icons.check_box,color: pinkRedColor,),
+        const SizedBox(width: 20.0,),
+        Text(text, style: const TextStyle(color: blackLighColor,fontSize: 15.0,decoration: TextDecoration.lineThrough)),
       ],
     );
   }
   Widget taskPending(String text){
     return Row(
       children: [
-        Icon(Icons.check_box_outline_blank_sharp,color: pinkRedColor,),
-        SizedBox(width: 20.0,),
-        Text(text, style: TextStyle(color: blackLighColor,fontSize: 15.0)),
+        const Icon(Icons.check_box_outline_blank_sharp,color: pinkRedColor,),
+        const SizedBox(width: 20.0,),
+        Text(text, style: const TextStyle(color: blackLighColor,fontSize: 15.0)),
       ],
     );
   }
@@ -171,7 +173,7 @@ class _NoteScreenState extends State<NoteScreen> {
           child: Row(
             children: [
               Expanded(child: ItemDynamic(index: i)),
-              SizedBox(width: 16,),
+              const SizedBox(width: 16,),
               // we need add button at last friends row only
               _addRemoveButton(i == friendsList.length-1, i),
             ],
@@ -187,9 +189,11 @@ class _NoteScreenState extends State<NoteScreen> {
     onTap: (){
       if(add){
         // add new text-fields at the top of all friends textfields
-        friendsList.insert(0, null);
+        friendsList.insert(0, "");
       }
-      else friendsList.removeAt(index);
+      else {
+        friendsList.removeAt(index);
+      }
       setState((){});
     },
     child: Container(
@@ -210,14 +214,14 @@ class _NoteScreenState extends State<NoteScreen> {
 
 class ItemDynamic extends StatefulWidget {
   final int index;
-  ItemDynamic({Key key, this.index}) : super(key: key);
+  const ItemDynamic({Key? key, required this.index}) : super(key: key);
 
   @override
   _ItemDynamicState createState() => _ItemDynamicState();
 }
 
 class _ItemDynamicState extends State<ItemDynamic> {
-  TextEditingController _nameContoller;
+  TextEditingController? _nameContoller;
 
   @override
   void initState() {
@@ -227,14 +231,14 @@ class _ItemDynamicState extends State<ItemDynamic> {
 
   @override
   void dispose() {
-    _nameContoller.dispose();
+    _nameContoller!.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      _nameContoller.text = _NoteScreenState.friendsList[widget.index] ?? '';
+      _nameContoller!.text = _NoteScreenState.friendsList[widget.index];
     });
     return TextFormField(
       controller: _nameContoller,
@@ -257,7 +261,7 @@ class _ItemDynamicState extends State<ItemDynamic> {
       keyboardType: TextInputType.multiline,
       style: const TextStyle(color: navyColor,fontWeight: FontWeight.bold),
       validator: (v){
-        if(v.trim().isEmpty) return 'Porfavor ingresa algo';
+        if(v!.trim().isEmpty) return 'Porfavor ingresa algo';
         return null;
       },
     );
