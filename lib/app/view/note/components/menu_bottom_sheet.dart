@@ -18,7 +18,7 @@ class _MenuBottomSheetState extends State<MenuBottomSheet>  with SingleTickerPro
 
   AnimationController? _controller;
   double get maxHeight{
-    final height = MediaQuery.of(context).size.height / 3;
+    final height = MediaQuery.of(context).size.height / 2;
     return height;
   }
   double? get headerTopMargin  => lerp(20,20 + MediaQuery.of(context).padding.top);
@@ -72,7 +72,7 @@ class _MenuBottomSheetState extends State<MenuBottomSheet>  with SingleTickerPro
                       top: colorPalletSize,
                       child: Container(
                         width: MediaQuery.of(context).size.width,
-                        height: 30,
+                        height: 25,
                         padding: EdgeInsets.only(right: padRight!),
                         child: ListView.builder(
                           itemCount: colorPallet.length,
@@ -163,7 +163,7 @@ class MenuButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       right: 0,
-      bottom: 10,
+      bottom: 15,
       child: Icon(icon,color: secondColor,),
     );
   }

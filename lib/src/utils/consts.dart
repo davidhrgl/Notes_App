@@ -17,3 +17,4 @@ const Color pinkRedColor = Color(0xFFb30075);
 const Color redColor = Color(0xFFee0045);
 const Color greenColor = Color(0xFF00fdad);
 const Color greenAcentColor = Color(0xFF00C9AB);
+const Color greenOliveColor = Color(0xFF5efed7);

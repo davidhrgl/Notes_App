@@ -35,6 +35,8 @@ class _CustomNavBarState extends State<CustomNavBar> {
           );
         }, 
         backgroundColor: bluedarkColor,
+        borderColor: Colors.white,
+        borderWidth: 0.1,
         activeIndex: bottomNavIndex,
         splashColor: primaryColor, 
         splashSpeedInMilliseconds: 300,

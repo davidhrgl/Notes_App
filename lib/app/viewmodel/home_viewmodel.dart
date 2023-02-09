@@ -25,4 +25,12 @@ class HomeViewModel with ChangeNotifier {
     _notesGroup = [...nots];
     notifyListeners();
   }
+
+    Future<NoteModel> newNote(NoteModel note) async{
+      final int id = await DBProvider.db.newNote(note);
+      note.id = id;
+      _notesGroup.add(note);
+      notifyListeners();
+    return note;
+  }
 }
