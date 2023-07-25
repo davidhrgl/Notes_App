@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app_me/app/viewmodel/home_viewmodel.dart';
 import 'package:notes_app_me/app/view/home/home_view.dart';
-import 'package:notes_app_me/app/view/note/note_view.dart';
+import 'package:notes_app_me/app/viewmodel/home_viewmodel.dart';
+import 'package:notes_app_me/routes.dart';
 import 'package:notes_app_me/src/services/notes_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -21,11 +21,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Notes App',
-        initialRoute: 'home',
-        routes: {
-          'home'  : (BuildContext context) => const HomeScreen(),
-          'note'  : (BuildContext context) => const NoteScreen(),
-        },
+        initialRoute: HomeView.routeName,
+        routes: routes
       ),
     );
   }

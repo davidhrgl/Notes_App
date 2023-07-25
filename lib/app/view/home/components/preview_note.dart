@@ -57,8 +57,8 @@ class PreviewNote extends StatelessWidget {
                   const SizedBox(
                     height: 5.0,
                   ),
-                  Row(
-                    children: const [
+                  const Row(
+                    children: [
                       Icon(
                         Icons.remove_circle_outline,
                         color: Colors.white,

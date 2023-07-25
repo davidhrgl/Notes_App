@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app_me/app/view/note/note_view.dart';
 import 'package:notes_app_me/app/viewmodel/home_viewmodel.dart';
 import 'package:notes_app_me/src/utils/consts.dart';
 import 'package:provider/provider.dart';
@@ -7,14 +8,27 @@ import 'components/custom_nav_bar.dart';
 import 'components/grid_notes.dart';
 import 'components/side_menu.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeView extends StatefulWidget {
+  static String routeName = '/home';
+  const HomeView({super.key});
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _HomeViewState createState() => _HomeViewState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeViewState extends State<HomeView> {
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (context) => HomeViewModel(context),
+      child: const _Content(),
+    );
+  }
+}
+
+class _Content extends StatelessWidget {
+  const _Content();
+
   @override
   Widget build(BuildContext context) {
     final homeVM = Provider.of<HomeViewModel>(context);
@@ -65,13 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
           color: Colors.white,
         ),
         onPressed: () {
-          Navigator.pushNamed(context, 'note');
-
-          // final note = NoteModel(
-          //     title: 'Primera Nota desde BD',
-          //     color: '#b30075',
-          //     content: 'Esta es una nota 1');
-          // homeVM.newNote(note);
+          Navigator.pushNamed(context, NoteView.routeName);
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
