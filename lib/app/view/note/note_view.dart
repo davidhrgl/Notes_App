@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app_me/src/utils/consts.dart';
 import 'package:notes_app_me/src/widgets/edit_bar.dart';
-import 'components/menu_bottom_sheet.dart';
 
 class NoteScreen extends StatefulWidget {
   const NoteScreen({super.key});
