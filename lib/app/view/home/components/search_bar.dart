@@ -14,12 +14,12 @@ class SearchBarCustom extends StatelessWidget {
         borderRadius: BorderRadius.circular(50.0),
         color: blackLighColor,
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children:const [
+          children:[
             SizedBox(width: 10.0,),
             Icon(Icons.filter_list_outlined,color: Colors.white,),
             SizedBox(width: 20.0,),

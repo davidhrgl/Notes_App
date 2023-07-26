@@ -1,12 +1,11 @@
 import 'dart:developer';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:notes_app_me/app/model/note_model.dart';
 import 'package:notes_app_me/app/viewmodel/home_viewmodel.dart';
 import 'package:notes_app_me/src/utils/color_convert.dart';
 import 'package:notes_app_me/src/utils/consts.dart';
 import 'package:provider/provider.dart';
+import 'package:notes_app_me/src/utils/utils.dart' as utl;
 
 class PreviewNote extends StatelessWidget {
   final NoteModel? prevNote;
@@ -116,7 +115,7 @@ class PreviewNote extends StatelessWidget {
                         textStyle: const TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold)),
                     child: const Row(
-                      children:[
+                      children: [
                         Icon(
                           Icons.multitrack_audio_sharp,
                           color: secondColor,
@@ -138,8 +137,16 @@ class PreviewNote extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
-                  onTap: () => alertDialogMe(context, homeVM),
-                  // homeVM.deleteNoteById(prevNote!.id!),
+                  onTap: () => utl.DialogAlert(
+                              context,
+                              const Text("Eliminar Nota"),
+                              const Text("¿Esta seguro de eliminar esta nota?"))
+                          .showAlert(() {
+                        homeVM.deleteNoteById(prevNote!.id!);
+                        log("Nota eliminada, id: ${prevNote!.id!}",
+                            time: DateTime.now());
+                        Navigator.pop(context, "Ok");
+                      }),
                   child: const Icon(
                     Icons.cancel_sharp,
                     color: secondColor,
@@ -149,33 +156,4 @@ class PreviewNote extends StatelessWidget {
       ],
     );
   }
-
-  Future<dynamic> alertDialogMe(BuildContext context, HomeViewModel homeVM) {
-    return showDialog(
-                    context: context,
-                    builder: (BuildContext context) => BackdropFilter(
-                          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                          child: AlertDialog(
-                            title: const Text("Eliminar Nota"),
-                            content: const Text(
-                                "¿Esta seguro de eliminar esta nota?"),
-                            actions: <Widget>[
-                              TextButton(
-                                onPressed: () =>
-                                    Navigator.pop(context, "Cancel"),
-                                child: const Text("Cancel"),
-                              ),
-                              TextButton(
-                                  onPressed: () {
-                                    homeVM.deleteNoteById(prevNote!.id!);
-                                    log("Nota eliminada, id: ${prevNote!.id!}",time: DateTime.now());
-                                    Navigator.pop(context, "Ok");
-                                  },
-                                  child: const Text("Ok"))
-                            ],
-                          ),
-                        ));
-  }
-
-  dialogConfirm() {}
 }

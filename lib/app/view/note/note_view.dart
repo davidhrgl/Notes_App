@@ -9,7 +9,7 @@ class NoteView extends StatefulWidget {
   const NoteView({super.key});
 
   @override
-  _NoteViewState createState() => _NoteViewState();
+  State<NoteView> createState() => _NoteViewState();
 }
 
 class _NoteViewState extends State<NoteView> {

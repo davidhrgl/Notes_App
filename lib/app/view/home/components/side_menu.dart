@@ -23,9 +23,9 @@ class SideMenu extends StatelessWidget {
                     color: greenAcentColor.withOpacity(0.2),
                     borderRadius: BorderRadius.circular(10.0)
                   ),
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children:const [ Text(
+                    children: [ Text(
                       'Hola \nDavid Hernandez',
                       style: TextStyle(
                         color:greenAcentColor,
@@ -38,10 +38,10 @@ class SideMenu extends StatelessWidget {
                     ]
                   ),
                 ),
-                Expanded(
+                const Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: const [
+                    children:[
                       ItemMenu(color: greenAcentColor,textColor: secondColor,text: "Home",icon: Icons.home_rounded,),
                       ItemMenu(color: greenAcentColor,textColor: secondColor,text: "Profile",icon: Icons.person_rounded,),
                       ItemMenu(color: greenAcentColor,textColor: secondColor,text: "Favorites",icon: Icons.favorite_rounded,),

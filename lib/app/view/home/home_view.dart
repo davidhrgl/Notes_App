@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:notes_app_me/app/view/note/note_view.dart';
 import 'package:notes_app_me/app/viewmodel/home_viewmodel.dart';
 import 'package:notes_app_me/src/utils/consts.dart';
@@ -14,7 +13,7 @@ class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
   @override
-  _HomeViewState createState() => _HomeViewState();
+  State<HomeView> createState() => _HomeViewState();
 }
 
 class _HomeViewState extends State<HomeView> {
@@ -35,6 +34,7 @@ class _Content extends StatelessWidget {
     final homeVM = Provider.of<HomeViewModel>(context);
     return Scaffold(
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.white),
         title: const Text(
           'Notes',
           style: TextStyle(
@@ -83,7 +83,6 @@ class _Content extends StatelessWidget {
         ),
         onPressed: () {
           Navigator.pushNamed(context, NoteView.routeName);
-          // _showDialog(context);
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
@@ -95,32 +94,6 @@ class _Content extends StatelessWidget {
           Icons.brush_outlined,
         ],
       ),
-    );
-  }
-
-  _showDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return CupertinoAlertDialog(
-          title: const Text("Agregar nueva nota"),
-          content: const Text("¿Desea crear una nueva nota?"),
-          actions: <Widget>[
-            CupertinoDialogAction(
-              child: const Text("Cancel"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            CupertinoDialogAction(
-              child: const Text("Ok"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
     );
   }
 }

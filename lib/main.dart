@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         theme: ThemeData(
-          colorSchemeSeed: const Color(0xff6750a4), useMaterial3: true),
+          colorSchemeSeed: const Color.fromARGB(255, 39, 91, 223), useMaterial3: true),
         debugShowCheckedModeBanner: false,
         title: 'Notes App',
         initialRoute: HomeView.routeName,

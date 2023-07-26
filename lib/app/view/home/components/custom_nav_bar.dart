@@ -2,12 +2,13 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:notes_app_me/src/utils/consts.dart';
 
+
 class CustomNavBar extends StatefulWidget {
   final List<IconData> icons;
   const CustomNavBar({Key? key,required this.icons}) : super(key: key);
 
   @override
-  _CustomNavBarState createState() => _CustomNavBarState();
+  State<CustomNavBar> createState() => _CustomNavBarState();
 }
 
 class _CustomNavBarState extends State<CustomNavBar> {

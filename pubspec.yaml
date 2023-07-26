@@ -40,6 +40,7 @@ dependencies:
   provider: ^6.0.5
   path_provider: ^2.0.12
   sqflite: ^2.2.4+1
+  path: any
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:path/path.dart';
+import 'package:path/path.dart' as pt;
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:notes_app_me/app/model/note_model.dart';
@@ -22,7 +22,7 @@ class DBProvider{
   Future<Database> initDB() async{
     //Path DB
     Directory documentsDirectory =  await getApplicationDocumentsDirectory();
-    final path = join(documentsDirectory.path,'NotesApp.db');
+    final path = pt.join(documentsDirectory.path,'NotesApp.db');
     // print(path);
     //Create DB
     return await openDatabase(
