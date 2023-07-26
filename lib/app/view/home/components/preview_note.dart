@@ -88,8 +88,8 @@ class PreviewNote extends StatelessWidget {
                         ),
                         textStyle: const TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold)),
-                    child: Row(
-                      children: const [
+                    child: const Row(
+                      children: [
                         Icon(
                           Icons.alarm_on_sharp,
                           color: secondColor,
@@ -115,8 +115,8 @@ class PreviewNote extends StatelessWidget {
                         ),
                         textStyle: const TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold)),
-                    child: Row(
-                      children: const [
+                    child: const Row(
+                      children:[
                         Icon(
                           Icons.multitrack_audio_sharp,
                           color: secondColor,
@@ -138,30 +138,7 @@ class PreviewNote extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
-                  onTap: () => showDialog(
-                      context: context,
-                      builder: (BuildContext context) => BackdropFilter(
-                            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                            child: AlertDialog(
-                              title: const Text("Eliminar Nota"),
-                              content: const Text(
-                                  "¿Esta seguro de eliminar esta nota?"),
-                              actions: <Widget>[
-                                TextButton(
-                                  onPressed: () =>
-                                      Navigator.pop(context, "Cancel"),
-                                  child: const Text("Cancel"),
-                                ),
-                                TextButton(
-                                    onPressed: () {
-                                      homeVM.deleteNoteById(prevNote!.id!);
-                                      log("Nota eliminada, id: ${prevNote!.id!}",time: DateTime.now());
-                                      Navigator.pop(context, "Ok");
-                                    },
-                                    child: const Text("Ok"))
-                              ],
-                            ),
-                          )),
+                  onTap: () => alertDialogMe(context, homeVM),
                   // homeVM.deleteNoteById(prevNote!.id!),
                   child: const Icon(
                     Icons.cancel_sharp,
@@ -171,6 +148,33 @@ class PreviewNote extends StatelessWidget {
             )),
       ],
     );
+  }
+
+  Future<dynamic> alertDialogMe(BuildContext context, HomeViewModel homeVM) {
+    return showDialog(
+                    context: context,
+                    builder: (BuildContext context) => BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                          child: AlertDialog(
+                            title: const Text("Eliminar Nota"),
+                            content: const Text(
+                                "¿Esta seguro de eliminar esta nota?"),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.pop(context, "Cancel"),
+                                child: const Text("Cancel"),
+                              ),
+                              TextButton(
+                                  onPressed: () {
+                                    homeVM.deleteNoteById(prevNote!.id!);
+                                    log("Nota eliminada, id: ${prevNote!.id!}",time: DateTime.now());
+                                    Navigator.pop(context, "Ok");
+                                  },
+                                  child: const Text("Ok"))
+                            ],
+                          ),
+                        ));
   }
 
   dialogConfirm() {}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:notes_app_me/app/view/note/note_view.dart';
 import 'package:notes_app_me/app/viewmodel/home_viewmodel.dart';
 import 'package:notes_app_me/src/utils/consts.dart';
@@ -72,7 +73,9 @@ class _Content extends StatelessWidget {
         ],
       )),
       floatingActionButton: FloatingActionButton(
+
         backgroundColor: greenAcentColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
         elevation: 10,
         child: const Icon(
           Icons.add,
@@ -80,6 +83,7 @@ class _Content extends StatelessWidget {
         ),
         onPressed: () {
           Navigator.pushNamed(context, NoteView.routeName);
+          // _showDialog(context);
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
@@ -91,6 +95,32 @@ class _Content extends StatelessWidget {
           Icons.brush_outlined,
         ],
       ),
+    );
+  }
+
+  _showDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return CupertinoAlertDialog(
+          title: const Text("Agregar nueva nota"),
+          content: const Text("¿Desea crear una nueva nota?"),
+          actions: <Widget>[
+            CupertinoDialogAction(
+              child: const Text("Cancel"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            CupertinoDialogAction(
+              child: const Text("Ok"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }

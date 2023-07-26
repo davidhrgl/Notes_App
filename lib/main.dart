@@ -19,6 +19,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_)=> NotesListProvider()),
       ],
       child: MaterialApp(
+        theme: ThemeData(
+          colorSchemeSeed: const Color(0xff6750a4), useMaterial3: true),
         debugShowCheckedModeBanner: false,
         title: 'Notes App',
         initialRoute: HomeView.routeName,
